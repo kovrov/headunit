@@ -1,3 +1,8 @@
+#include "hu_uti.h"
+
+#ifdef __cplusplus
+extern "C" {
+#endif
 
   int hu_aap_usb_recv (byte * buf, int len, int tmo);                      // Used by intern,                      hu_ssl
   int hu_aap_usb_set  (int chan, int flags, int type, byte * buf, int len);// Used by intern                       hu_ssl
@@ -9,5 +14,6 @@
                                                                                                                           // Read encrypted message from USB
                                                                                                                           // Respond to decrypted message
                                                                                                                           // If video data, put on queue
-
-
+#ifdef __cplusplus
+}
+#endif

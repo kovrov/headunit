@@ -9,9 +9,10 @@
 
   #define LOGTAG "hu_uti"
   #include "hu_uti.h"
+  #include <ctype.h>
 
 #ifndef NDEBUG
-  char * state_get (int state) {
+  const char * state_get (int state) {
     switch (state) {
       case hu_STATE_INITIAL:                                           // 0
         return ("hu_STATE_INITIAL");
@@ -208,6 +209,7 @@
 
 */
 
+#if 0
   unsigned long us_get () {                                                      // !!!! Affected by time jumps ?
     struct timespec tspec = {0, 0};
     int res = clock_gettime (CLOCK_MONOTONIC, & tspec);
@@ -269,8 +271,14 @@
 
     return (ms);
   }
+#endif
 
+  unsigned long ms_sleep (unsigned long ms) {
+    usleep (ms * 1000L);
+    return (0);
+  }
 
+#if 0
   static void * busy_thread (void * arg) {
     logd ("busy_thread start");
 
@@ -299,6 +307,7 @@
 
     return (NULL);                                                      // Compiler friendly ; never reach
   }
+#endif
 
 
 
@@ -631,6 +640,8 @@
   }
   int insmod_shell = 1;
 */
+
+#if 0
   int util_insmod (char * module) {    // ("/system/lib/modules/radio-iris-transport.ko");
     int ret = 0;
 /*
@@ -653,6 +664,7 @@
 */
     return (ret);
   }
+#endif
 
   int file_write_many (const char * filename, int * pfd, char * data, int len, int flags) {
     logd ("file_write_many filename: %d  * pfd: %d  len: %d  flags: %d", filename, * pfd, len, flags);
@@ -740,6 +752,7 @@
     return (buffer);
   }
 
+#if 0
   extern int init_module (void *, unsigned long, const char *);
 
   int insmod_internal (const char * filename) {
@@ -786,6 +799,7 @@
     return ret;
  }
 
+#endif
 
 /*char * holder_id = "None";
   int lock_open (const char * id, volatile int * lock, int tmo) {

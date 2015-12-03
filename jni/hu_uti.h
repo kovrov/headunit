@@ -78,14 +78,30 @@
 
 #endif
 
-  int hu_log (int prio, const char * tag, const char * func, const char * fmt, ...);
+//#define  logx(...) do { printf(__VA_ARGS__); printf("\n"); } while (0)
+//#define  logv(...) do { printf(__VA_ARGS__); printf("\n"); } while (0)
+//#define  logd(...) do { printf("- "); printf(__VA_ARGS__); printf("\n"); } while (0)
+//#define  logw(...) do { printf("* "); printf(__VA_ARGS__); printf("\n"); } while (0)
+//#define  loge(...) do { printf("# "); printf(__VA_ARGS__); printf("\n"); } while (0)
+
+#ifdef __cplusplus
+extern "C" {
+#endif
+
+int hu_log (int prio, const char * tag, const char * func, const char * fmt, ...);
 
 
-  unsigned long ms_get          ();
+//  unsigned long ms_get          ();
   unsigned long ms_sleep        (unsigned long ms);
   void hex_dump                 (char * prefix, int width, unsigned char * buf, int len);
   char * write_tail_buffer_get  (int len);
   char * read_head_buffer_get   (int * len);
+  const char * state_get (int state);
+  int file_get (const char * filename);
+
+#ifdef __cplusplus
+}
+#endif
 
   #ifndef __ANDROID_API__
     #define strlcpy   strncpy

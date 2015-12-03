@@ -4,6 +4,9 @@
   #define LOGTAG "hu_aap"
   #include "hu_uti.h"
   #include "hu_ssl.h"
+  #include "hu_usb.h"
+  #include "hu_aap.h"
+
 #ifndef NDEBUG
   #include "hu_aad.h"
 #endif

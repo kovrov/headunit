@@ -2,6 +2,7 @@
   //
 
   #define LOGTAG "hu_usb"
+  #include "hu_usb.h"
   #include "hu_uti.h"                                                  // Utilities
   #include "hu_oap.h"                                                  // Open Accessory Protocol
 
@@ -636,6 +637,7 @@ int     LIBUSB_CALL libusb_bulk_transfer          (libusb_device_handle *dev_han
       }
       logd ("OK iusb_init");
 
+#if 0
       if (iusb_best_vendor == USB_VID_GOO) {
         logd ("Already OAP/AA mode, no need to call iusb_oap_start()");
 
@@ -643,6 +645,7 @@ int     LIBUSB_CALL libusb_bulk_transfer          (libusb_device_handle *dev_han
         logd ("  SET: iusb_state: %d (%s)", iusb_state, state_get (iusb_state));
         return (0);
       }
+#endif
 
       ret = iusb_oap_start ();
       if (ret < 0) {
